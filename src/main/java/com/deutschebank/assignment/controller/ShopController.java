@@ -27,12 +27,18 @@ public class ShopController {
 	private ShopServiceI shopService;
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Response addNewShop(@RequestBody Shop shop) throws IOException, JSONException{
-		if(checkEmptyAndNull(shop.getShopName()) || checkEmptyAndNull(shop.getShopNumber()) || checkEmptyAndNull(shop.getShopPinCode()))
-			return new ErrorResponse("1", "Missing parameter");
-		if(shopService.addShop(shop))
-			return new SuccessResponse("Shop Added Successfully",null);
-		else return new ErrorResponse("2", "Internal Server Error");
+	public Response addNewShop(@RequestBody Shop shop){
+		try{
+			if(checkEmptyAndNull(shop.getShopName()) || checkEmptyAndNull(shop.getShopNumber()) || checkEmptyAndNull(shop.getShopPinCode()))
+				return new ErrorResponse("1", "Missing parameter");
+			Shop s =null;
+			if((s=shopService.addShop(shop)) != null)
+				return new SuccessResponse("Shop Added Successfully",s);
+			else 
+				return new ErrorResponse("2", "Could not add shop.");
+		}catch(Exception e){
+			return new ErrorResponse("3", e.getMessage());
+		}
 	}
 	
 	
@@ -41,8 +47,21 @@ public class ShopController {
 	}
 	
 	@RequestMapping(value="/get",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Response getShop(@RequestParam("customerLongitude") Double lang,@RequestParam("customerLatitude") Double lat){
-		
-		
+	public Response getShop(@RequestParam("customerLongitude") Double lng,@RequestParam("customerLatitude") Double lat) throws Exception{
+		try{
+			if(lng == null || lat == null)
+				return new ErrorResponse("1", "Missing parameter");
+			Shop shop = new Shop();
+			shop.setLatitude(lat);
+			shop.setLongitude(lng);
+			shop = shopService.getShop(shop);
+			if(shop != null)
+				return new SuccessResponse("Nearest shop found.", shop);
+			else 
+				return new ErrorResponse("2", "Error finding nearest lcoation");
+		}catch(Exception e){
+			return new ErrorResponse("3", e.getMessage());
+		}
+			
 	}
 }

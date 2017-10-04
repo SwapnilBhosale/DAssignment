@@ -6,13 +6,17 @@ import java.util.List;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
+import com.deutschebank.assignment.constant.Constant;
 import com.deutschebank.assignment.model.Shop;
+import com.google.maps.GeoApiContext;
 
 @SpringBootApplication
 public class AssignmentApplication implements CommandLineRunner {
 
 	static List<Shop> shopList;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(AssignmentApplication.class, args);
 	}
@@ -24,6 +28,11 @@ public class AssignmentApplication implements CommandLineRunner {
 	}
 	
 	
+	@Bean
+	public GeoApiContext getGeoApiContext(){
+		return new GeoApiContext();
+	}
+	
 	public static void addShop(Shop shop){
 		shopList.add(shop);
 	}
@@ -31,5 +40,9 @@ public class AssignmentApplication implements CommandLineRunner {
 	
 	public static void printList(){
 		System.out.println("**** " +shopList);
+	}
+	
+	public static List<Shop> getShopList(){
+		return shopList;
 	}
 }

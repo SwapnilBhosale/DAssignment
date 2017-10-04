@@ -10,6 +10,6 @@ import com.deutschebank.assignment.model.Shop;
 
 public interface ShopServiceI {
 
-	public boolean addShop(Shop shop) throws IOException, JSONException;
-	public Shop getShop(Shop shop);
+	public Shop addShop(Shop shop) throws IOException, JSONException, Exception;
+	public Shop getShop(Shop shop) throws Exception;
 }
