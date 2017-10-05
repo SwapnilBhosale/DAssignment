@@ -1,0 +1,159 @@
+{
+	"variables": [],
+	"info": {
+		"name": "DeustcheBankAssignment",
+		"_postman_id": "28bc0a8d-f093-e24a-b080-34c6c3760567",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add GsLab Shop",
+			"request": {
+				"url": "localhost:8080/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"shopName\" : \"GSLab\",\n\t\"shopNumber\" : \"1234566\",\n\t\"shopPinCode\" : \"411045\"\n}"
+				},
+				"description": "Add new Shop"
+			},
+			"response": []
+		},
+		{
+			"name": "Find near to GSLab",
+			"request": {
+				"url": {
+					"raw": "localhost:8080/get?customerLongitude=73.79401299999999&customerLatitude=18.555",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "customerLongitude",
+							"value": "73.79401299999999",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "customerLatitude",
+							"value": "18.555",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"shopName\" : \"GSLab\",\n\t\"shopNumber\" : \"1234566\",\n\t\"shopPinCode\" : \"411045\"\n}"
+				},
+				"description": "Find nearest shop"
+			},
+			"response": []
+		},
+		{
+			"name": "Add pccoe shop",
+			"request": {
+				"url": "localhost:8080/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"shopName\" : \"PCCOE\",\n\t\"shopNumber\" : \"1234566\",\n\t\"shopPinCode\" : \"411044\"\n}"
+				},
+				"description": "Add PCCOE college\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Ramkrishna Shop",
+			"request": {
+				"url": "localhost:8080/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"shopName\" : \"Ramkrishana Mangal Karyalaya\",\n\t\"shopNumber\" : \"1234566\",\n\t\"shopPinCode\" : \"411061\"\n}"
+				},
+				"description": "Add Ramkrishna Mangal Karyalaya"
+			},
+			"response": []
+		},
+		{
+			"name": "Find shop near Ravet Bridge",
+			"request": {
+				"url": {
+					"raw": "localhost:8080/get?customerLongitude=73.79401299999999&customerLatitude=19.6",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "customerLongitude",
+							"value": "73.79401299999999",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "customerLatitude",
+							"value": "19.6",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"shopName\" : \"GSLab\",\n\t\"shopNumber\" : \"1234566\",\n\t\"shopPinCode\" : \"411045\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
