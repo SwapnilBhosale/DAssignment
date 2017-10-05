@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.deutschebank.assignment.AssignmentApplication;
+import com.deutschebank.assignment.constant.Constant;
 import com.deutschebank.assignment.model.ErrorResponse;
 import com.deutschebank.assignment.model.Response;
 import com.deutschebank.assignment.model.Shop;
@@ -26,6 +28,12 @@ public class ShopController {
 	@Autowired
 	private ShopServiceI shopService;
 	
+	
+	/*
+	 * This method will be invoked when add endpoint is hit
+	 * It expects shop details in body as a JSON object
+	 * 
+	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Response addNewShop(@RequestBody Shop shop){
 		try{
@@ -37,6 +45,7 @@ public class ShopController {
 			else 
 				return new ErrorResponse("2", "Could not add shop.");
 		}catch(Exception e){
+			e.printStackTrace();
 			return new ErrorResponse("3", e.getMessage());
 		}
 	}

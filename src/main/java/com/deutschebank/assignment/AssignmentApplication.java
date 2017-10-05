@@ -7,12 +7,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import com.deutschebank.assignment.constant.Constant;
 import com.deutschebank.assignment.model.Shop;
 import com.google.maps.GeoApiContext;
 
 @SpringBootApplication
+@ComponentScan(Constant.BASE_PACKAGE)
 public class AssignmentApplication implements CommandLineRunner {
 
 	static List<Shop> shopList;
@@ -44,5 +46,9 @@ public class AssignmentApplication implements CommandLineRunner {
 	
 	public static List<Shop> getShopList(){
 		return shopList;
+	}
+	
+	public static void setShopList(ArrayList<Shop> list){
+		shopList = list;
 	}
 }

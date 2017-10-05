@@ -43,6 +43,7 @@ public class ShopServiceImpl implements ShopServiceI {
 		sb.append(shop.getShopName()).append(",").append(shop.getShopNumber())
 		.append(",").append(shop.getShopPinCode());
 	
+		System.out.println("Shop data :L "+shop.toString());
 		ctx.setApiKey(Constant.GEOCODING_API_KEY);
 		GeocodingResult result = GeocodingApi.geocode(ctx, sb.toString()).await()[0];
 		
@@ -64,8 +65,11 @@ public class ShopServiceImpl implements ShopServiceI {
 		// TODO Auto-generated method stub
 		
 		List<Shop> myList = AssignmentApplication.getShopList();
-		if (myList.size() == 0)
+		if (myList.size() == 0){
+			System.out.println("throwing the error");
 			throw new Exception("No shops are in found in DB.");
+			
+		}
 		LatLng[] latLng = new LatLng[myList.size()];
 		int i=0;
 		for(Shop s : myList){
